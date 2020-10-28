@@ -11,10 +11,16 @@ import SwiftUI
 // Menu View
 struct MenuView: View {
     @Binding var showsMenu: Bool
+    @State private var difficulty = 0
     
     var body: some View {
         VStack {
-            Text("Menu")
+            Button(action: {
+                self.showsMenu = false
+            }) {
+                Text("Menü schliessen")
+            }
+            //Text("Menu")
             Spacer()
             Button(action: {
                 self.showsMenu = false
@@ -35,11 +41,15 @@ struct MenuView: View {
             }
             Spacer()
             
-            Button(action: {
-                self.showsMenu = false
-            }) {
-                Text("Hide Menu")
-            }
+//            TODO: Binding muss gemacht werden
+            Picker(selection: $difficulty, label: Text("Schwierigkeit")) {
+                            Text("Leicht").tag(0)
+                            Text("Mittel").tag(1)
+                            Text("Schwierig").tag(2)
+                        }.pickerStyle(SegmentedPickerStyle())
+
+                        //Text("Level: \(difficulty)")
+
         }
  
     }
