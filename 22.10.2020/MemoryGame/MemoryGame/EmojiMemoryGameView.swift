@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
+    @State private var showMenu = false
     
     @ObservedObject var viewModel: EmojiMemoryGameViewModel
     
@@ -29,8 +30,22 @@ struct EmojiMemoryGameView: View {
             }, label: {
                 Text("New Game")
             })
+            Button(action: {
+                self.showMenu.toggle()
+            }) {
+                Text("Menu")
+            }
+            .sheet(isPresented: $showMenu ) {
+                MenuView()
+            }
         }
         .foregroundColor(Color.blue)
+    }
+}
+
+struct MenuView: View {
+    var body: some View {
+        Text("Menu")
     }
 }
 
