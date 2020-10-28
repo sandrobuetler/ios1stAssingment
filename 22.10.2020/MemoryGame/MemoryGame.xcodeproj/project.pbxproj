@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9395BFD2549BC3900C71880 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9395BFC2549BC3900C71880 /* MenuView.swift */; };
 		DE0D7DE724D3FBD800A35B0F /* MemoryGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0D7DE624D3FBD800A35B0F /* MemoryGameModel.swift */; };
 		DE0D7DE924D3FDD900A35B0F /* EmojiMemoryGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0D7DE824D3FDD900A35B0F /* EmojiMemoryGameViewModel.swift */; };
 		DE692EF424E3EA8500156376 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE692EF324E3EA8500156376 /* GridLayout.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9395BFC2549BC3900C71880 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		DE0D7DE624D3FBD800A35B0F /* MemoryGameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGameModel.swift; sourceTree = "<group>"; };
 		DE0D7DE824D3FDD900A35B0F /* EmojiMemoryGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGameViewModel.swift; sourceTree = "<group>"; };
 		DE692EF324E3EA8500156376 /* GridLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				DE8F2B5324ECFC9C00958892 /* Cardify.swift */,
 				DE8F2B4F24EC135800958892 /* CardView.swift */,
 				DEBA107524CAD20A00D16149 /* EmojiMemoryGameView.swift */,
+				A9395BFC2549BC3900C71880 /* MenuView.swift */,
 				DE0D7DE824D3FDD900A35B0F /* EmojiMemoryGameViewModel.swift */,
 				DE692EF524E3EB6D00156376 /* Grid.swift */,
 				DE692EF324E3EA8500156376 /* GridLayout.swift */,
@@ -180,6 +183,7 @@
 				DE8F2B5024EC135800958892 /* CardView.swift in Sources */,
 				DE692EF424E3EA8500156376 /* GridLayout.swift in Sources */,
 				DE8F2B5424ECFC9C00958892 /* Cardify.swift in Sources */,
+				A9395BFD2549BC3900C71880 /* MenuView.swift in Sources */,
 				DE8F2B4E24EC127A00958892 /* EmojiMemoryGameView.swift in Sources */,
 				DE692EF624E3EB6D00156376 /* Grid.swift in Sources */,
 				DE8F2B5224ECF41200958892 /* Pie.swift in Sources */,

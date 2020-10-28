@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct EmojiMemoryGameView: View {
-    @State private var showMenu = false
+    @State private var showMenu = true
     
     @ObservedObject var viewModel: EmojiMemoryGameViewModel
     
@@ -36,18 +36,14 @@ struct EmojiMemoryGameView: View {
                 Text("Menu")
             }
             .sheet(isPresented: $showMenu ) {
-                MenuView()
+                MenuView(showsMenu: $showMenu)
             }
         }
         .foregroundColor(Color.blue)
     }
 }
 
-struct MenuView: View {
-    var body: some View {
-        Text("Menu")
-    }
-}
+
 
 // MARK: - Drawing Constants
 private let cardRotationDuration = Double(0.75)
