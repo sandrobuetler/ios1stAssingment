@@ -43,15 +43,18 @@ struct CardView: View{
                         Pie(startAngle: Angle(degrees: startAngleConstant),
                             endAngle: Angle(degrees: -card.bonusTimeRemaining * endAngleConstant ),clockwise: true)
                     }
-                }.padding(5)
-                    .opacity(opacity)
+                }
+                .padding(5)
+                .opacity(opacity)
+                .transition(.scale)
+                
                 Text(card.content)
                     .font(Font.system(size: fontSize(for: size)))
                     .rotationEffect(Angle(degrees: card.isMatched ? 360 : 0))
                     .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
             }
             .cardify(isFaceUp: card.isFaceUp)
-            .transition(.scale)
+            .transition(AnyTransition.scale)
         }
     }
     

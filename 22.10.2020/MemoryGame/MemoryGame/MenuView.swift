@@ -25,19 +25,19 @@ struct MenuView: View {
             Button(action: {
                 self.showsMenu = false
             }) {
-                Text("Game 1")
+                Text("Emojy")
             }
             Spacer()
             Button(action: {
                 self.showsMenu = false
             }) {
-                Text("Game 2")
+                Text("Fotos")
             }
             Spacer()
             Button(action: {
                 self.showsMenu = false
             }) {
-                Text("Game 3")
+                Text("Kontakte")
             }
             Spacer()
             
@@ -55,3 +55,8 @@ struct MenuView: View {
     }
 }
 
+struct MenuView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}

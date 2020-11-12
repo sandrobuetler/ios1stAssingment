@@ -1,4 +1,4 @@
-//
+ //
 //  EmojiMemoryGameView.swift
 //  MemoryGame
 //
@@ -28,18 +28,20 @@ struct EmojiMemoryGameView: View {
                     viewModel.resetGame()
                 }
             }, label: {
-                Text("New Game")
-            })
+                Text("Neues Spiel")
+            }).padding(textPadding)
+            Text("Punkte \(viewModel.points)")
+            Text("Highscore \(viewModel.highscore)")
             Button(action: {
                 self.showMenu.toggle()
-            }) {
+            }, label: {
                 Text("Menu")
-            }
+            }).padding(textPadding)
             .sheet(isPresented: $showMenu ) {
                 MenuView(showsMenu: $showMenu)
             }
         }
-        .foregroundColor(Color.blue)
+        .foregroundColor(viewModel.theme.color)
     }
 }
 
@@ -49,6 +51,7 @@ struct EmojiMemoryGameView: View {
 private let cardRotationDuration = Double(0.75)
 private let gameResetAnimationDuration = Double(2)
 private let cardViewPadding = CGFloat(5)
+private let textPadding = CGFloat(10)
 
 struct EmojiMemoryGameView_Previews: PreviewProvider {
     static var previews: some View {

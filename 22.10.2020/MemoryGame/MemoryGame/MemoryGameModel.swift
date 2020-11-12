@@ -11,6 +11,8 @@ import Foundation
 struct MemoryGameModel<CardContent> where CardContent: Equatable{
     
     private(set) var cards: Array<Card>
+    private(set) var points = 0
+    private(set) var highscore = 0
     
     private var indexOfFaceUpCard: Int?{
         get{
@@ -30,10 +32,22 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
             !cards[chosenIndex].isMatched{
             
             if let potentialMatchIndex = indexOfFaceUpCard{
+                
+                //wenn karten übereinstimmen -> match
                 if cards[chosenIndex].content == cards[potentialMatchIndex].content{
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
+                    
+                    points += 3
+                    if points >= highscore{
+                        highscore = points
+                    }
                 }
+                //wenn karten nicht übereinstimmen -> not match
+                else{
+                    points -= 1
+                }
+                
                 cards[chosenIndex].isFaceUp = true
             }
             else{

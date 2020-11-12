@@ -13,21 +13,32 @@ class EmojiMemoryGameViewModel: ObservableObject{
     
     @Published private var model: MemoryGameModel<String>
     
-    init() {
-        model = EmojiMemoryGameViewModel.createMemoryGame()
+    var theme = themes.randomElement()!
+    
+    private static func createMemoryGame(theme: Theme)->MemoryGameModel<String>{
+        let emojiis: Array<String> = theme.emojis.shuffled()
+        return  MemoryGameModel<String>(numberOfPairsOfCards: theme.numberOfPairs ?? Int.random(in: 4...6)){
+            index in
+            return emojiis[index]
+        }
     }
     
-    private static func createMemoryGame()->MemoryGameModel<String>{
-        let emojiis: Array<String> = ["🙈","🙉", "🙊"]
-        return  MemoryGameModel<String>(numberOfPairsOfCards: emojiis.count, cardContentFactory: { pairIndex in
-            return emojiis[pairIndex]
-        })
+    init() {
+        model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
     }
     
     // MARK: - Access to the Model
     
     var cards: Array<MemoryGameModel<String>.Card>{
         return model.cards
+    }
+    
+    var points: Int {
+        return model.points
+    }
+    
+    var highscore: Int{
+        return model.highscore
     }
     
     // MARK: - Intents
@@ -37,7 +48,8 @@ class EmojiMemoryGameViewModel: ObservableObject{
     }
     
     func resetGame(){
-       model = EmojiMemoryGameViewModel.createMemoryGame()
+        theme = themes.randomElement()!
+        model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
     }
     
 }
