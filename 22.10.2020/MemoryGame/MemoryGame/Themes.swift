@@ -19,10 +19,11 @@ let themes: [Theme] = [
     Theme(
         name: "Europa",
         emojis: ["🇧🇪","🇨🇿","🇨🇭","🇩🇪","🇪🇸","🇪🇺","🇫🇷","🇬🇧","🇬🇷","🇦🇹","🇱🇮","🇮🇹"],
-        color: .black),
+        color: .black,
+        numberOfPairs: 4),
     Theme(
         name: "Sports",
         emojis: ["🧗","🏌️","🏊","⛹️","🤼","🤹","🧘","🤽","🚵","🏋️","🚴","🤸"],
         color: .red,
-        numberOfPairs: 6),
+        numberOfPairs: 10),
 ]
