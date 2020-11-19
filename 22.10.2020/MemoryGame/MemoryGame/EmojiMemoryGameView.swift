@@ -10,6 +10,7 @@ import SwiftUI
 
 struct EmojiMemoryGameView: View {
     @State private var showMenu = true
+    var theme: Theme
     
 
     //@State private var selectedDificulty = 0
@@ -20,7 +21,7 @@ struct EmojiMemoryGameView: View {
     var body: some View {
         VStack{
             Grid(viewModel.cards) { card in
-                CardView(card: card).onTapGesture {
+                CardView(card: card, theme: theme).onTapGesture {
                     withAnimation(.linear(duration: cardRotationDuration)){
                         viewModel.choose(card: card)
                     }
