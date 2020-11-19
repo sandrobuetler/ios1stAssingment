@@ -16,6 +16,7 @@ class EmojiMemoryGameViewModel: ObservableObject{
     
     var theme = themes[0]
     var isIpad: Bool
+    var gameThemeIndex: Int = 0;
     
     private static func createMemoryGame(theme: Theme)->MemoryGameModel<String>{
         let defaults = UserDefaults.standard
@@ -91,6 +92,7 @@ class EmojiMemoryGameViewModel: ObservableObject{
         return model.difficulty
     }
     
+    
     // MARK: - Intents
     
     func choose(card: MemoryGameModel<String>.Card){
@@ -103,6 +105,7 @@ class EmojiMemoryGameViewModel: ObservableObject{
     }
     func resetGame(gameTheme: Int){
         theme = themes[gameTheme]
+        gameThemeIndex = gameTheme
         model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
     }
     

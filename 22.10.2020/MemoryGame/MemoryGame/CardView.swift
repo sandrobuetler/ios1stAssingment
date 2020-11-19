@@ -11,6 +11,11 @@ import SwiftUI
 struct CardView: View{
     
     var card: MemoryGameModel<String>.Card
+    @ObservedObject var viewModel: EmojiMemoryGameViewModel
+    
+    var gameThemeIndex: Int{
+        return viewModel.gameThemeIndex
+    }
     
     var body: some View{
         GeometryReader{geometry in
@@ -53,8 +58,8 @@ struct CardView: View{
                     .rotationEffect(Angle(degrees: card.isMatched ? 360 : 0))
                     .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
                 
-                /*
-                if theme.name == "Images" {
+                
+                if gameThemeIndex > 1 {
                     Image(card.content)
                         .resizable()
                         .scaledToFit()
@@ -65,7 +70,6 @@ struct CardView: View{
                         .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
                 }
                 
-                  */
                 
             }
             .cardify(isFaceUp: card.isFaceUp)
