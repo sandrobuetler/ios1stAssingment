@@ -36,6 +36,16 @@ struct CardView: View{
     private func body(for size: CGSize)-> some View{
         if card.isFaceUp || !card.isMatched{
             ZStack{
+                if gameThemeIndex > 1 {
+                    Image(card.content)
+                        .resizable()
+                        .scaledToFit()
+                }else {
+                    Text(card.content)
+                        .font(Font.system(size: fontSize(for: size)))
+                        .rotationEffect(Angle(degrees: card.isMatched ? 360 : 0))
+                        .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
+                }
                 Group{
                     if card.isConsumingBonusTime{
                         Pie(startAngle: Angle(degrees: startAngleConstant),
@@ -53,22 +63,6 @@ struct CardView: View{
                 .opacity(opacity)
                 .transition(.scale)
                 
-                Text(card.content)
-                    .font(Font.system(size: fontSize(for: size)))
-                    .rotationEffect(Angle(degrees: card.isMatched ? 360 : 0))
-                    .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
-                
-                
-                if gameThemeIndex > 1 {
-                    Image(card.content)
-                        .resizable()
-                        .scaledToFit()
-                }else {
-                    Text(card.content)
-                        .font(Font.system(size: fontSize(for: size)))
-                        .rotationEffect(Angle(degrees: card.isMatched ? 360 : 0))
-                        .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
-                }
                 
                 
             }
