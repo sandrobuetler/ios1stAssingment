@@ -23,10 +23,8 @@ class EmojiMemoryGameViewModel: ObservableObject{
         var isIpad: Bool
         if UIDevice.current.userInterfaceIdiom == .pad {
             isIpad = true
-            print(isIpad)
         }else {
             isIpad = false
-            print(isIpad)
         }
         let dif: Int = defaults.integer(forKey: "Difficulty")
         
@@ -62,10 +60,8 @@ class EmojiMemoryGameViewModel: ObservableObject{
         
         if UIDevice.current.userInterfaceIdiom == .pad {
             isIpad = true
-            print(isIpad)
         }else {
             isIpad = false
-            print(isIpad)
         }
         model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
     }
