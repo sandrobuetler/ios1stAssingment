@@ -19,8 +19,6 @@ struct MenuView: View {
     var dificulty = ["Leicht", "Mittel", "Schwer"]
     @State var selectedDificulty: Int = 0;
     
-    
-    
 
     
     var body: some View {
@@ -34,13 +32,11 @@ struct MenuView: View {
                         .foregroundColor(.red)
                     .padding(10)
             }
-       
-            
-            
-                
+
             Text("Menu")
             Spacer()
             Button(action: {
+                
                 viewModel.resetGame(gameTheme: 0)
                 self.showsMenu = false
             }) {
@@ -83,8 +79,6 @@ struct MenuView: View {
                         }
             }
             
-            
-                     //Text("You selected: \(dificulty[selectedDificulty])")
         }.pickerStyle(SegmentedPickerStyle())
         
         .onReceive([self.selectedDificulty].publisher.first()) {dificulty in
@@ -93,10 +87,7 @@ struct MenuView: View {
         .foregroundColor(viewModel.theme.color)
     }
     
-    // Just an example function below
     func pickerChange(dificulty: Int) {
-           print(dificulty)
-        //let defaults = UserDefaults.standard
         defaults.set(dificulty, forKey: "Difficulty")
      }
     
@@ -111,10 +102,6 @@ struct GradientButtonStyle: ButtonStyle {
             .cornerRadius(10.0)
     }
 }
-
-
-
-
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {

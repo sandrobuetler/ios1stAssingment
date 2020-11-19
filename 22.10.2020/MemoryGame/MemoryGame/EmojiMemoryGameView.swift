@@ -10,11 +10,6 @@ import SwiftUI
 
 struct EmojiMemoryGameView: View {
     @State private var showMenu = true
-    //var theme: Theme
-    
-
-    //@State private var selectedDificulty = 0
-    //@State private var dif = 1
     
     @ObservedObject var viewModel: EmojiMemoryGameViewModel
     

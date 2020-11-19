@@ -67,11 +67,7 @@ class EmojiMemoryGameViewModel: ObservableObject{
             isIpad = false
             print(isIpad)
         }
-        
-        //let defaults = UserDefaults.standard
-        //var dif = defaults.integer(forKey: "Difficulty")
         model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
-        //print(dif)
     }
     
     // MARK: - Access to the Model
@@ -100,7 +96,6 @@ class EmojiMemoryGameViewModel: ObservableObject{
     }
     
     func resetGame(){
-        //theme = themes[0]
         model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
     }
     func resetGame(gameTheme: Int){

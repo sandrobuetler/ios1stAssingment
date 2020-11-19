@@ -16,14 +16,8 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     private(set) var cards: Array<Card>
     private(set) var points = 0
     private(set) var highscore: Int
-    
-    private(set) var difficulty = 4
-    
-    
-    
-   
+    private(set) var difficulty = 0
 
-    
     private var indexOfFaceUpCard: Int?{
         get{
             cards.indices.filter { cards[$0].isFaceUp }.only
@@ -81,7 +75,6 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
         }
         cards.shuffle()
     }
-    
     
     struct Card: Identifiable{
         var isFaceUp: Bool = false {
