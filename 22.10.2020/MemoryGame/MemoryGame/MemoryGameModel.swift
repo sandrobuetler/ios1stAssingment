@@ -19,7 +19,7 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     
     private(set) var difficulty = 4
     
-    private(set) var isIpad: Bool
+    
     
    
 
@@ -71,12 +71,7 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent){
         
-        if UIDevice.current.userInterfaceIdiom == .pad {
-            isIpad = true
-        }else {
-            isIpad = false
-        }
-        
+       
         highscore = defaults.integer(forKey: "Highscore")
         cards = Array<Card>()
         for pairIndex in 0..<numberOfPairsOfCards{

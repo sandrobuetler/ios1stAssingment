@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 class EmojiMemoryGameViewModel: ObservableObject{
@@ -14,21 +15,39 @@ class EmojiMemoryGameViewModel: ObservableObject{
     @Published private var model: MemoryGameModel<String>
     
     var theme = themes.randomElement()!
+    var isIpad: Bool
     
     private static func createMemoryGame(theme: Theme)->MemoryGameModel<String>{
         let defaults = UserDefaults.standard
-        
+        var isIpad: Bool
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            isIpad = true
+            print(isIpad)
+        }else {
+            isIpad = false
+            print(isIpad)
+        }
         let dif: Int = defaults.integer(forKey: "Difficulty")
         
-        var pairs: Int = 1
+        var pairs: Int = 0
         if (dif == 0) {
-            pairs = 6
+            pairs = 4
+            if isIpad == true {
+                pairs = pairs + 3
+            }
+            
         }
         if dif == 1 {
-            pairs = 8
+            pairs = 6
+            if isIpad == true {
+                pairs = pairs + 3
+            }
         }
         if dif == 2 {
-            pairs = 10
+            pairs = 8
+            if isIpad == true {
+                pairs = pairs + 3
+            }
         }
         
         let emojiis: Array<String> = theme.emojis.shuffled()
@@ -39,6 +58,15 @@ class EmojiMemoryGameViewModel: ObservableObject{
     }
     
     init() {
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            isIpad = true
+            print(isIpad)
+        }else {
+            isIpad = false
+            print(isIpad)
+        }
+        
         //let defaults = UserDefaults.standard
         //var dif = defaults.integer(forKey: "Difficulty")
         model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
