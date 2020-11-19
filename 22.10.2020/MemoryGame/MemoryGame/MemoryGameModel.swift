@@ -10,9 +10,12 @@ import Foundation
 
 struct MemoryGameModel<CardContent> where CardContent: Equatable{
     
+    var defaults = UserDefaults.standard
+    
     private(set) var cards: Array<Card>
     private(set) var points = 0
-    private(set) var highscore = 0
+    private(set) var highscore: Int
+
     
     private var indexOfFaceUpCard: Int?{
         get{
@@ -24,6 +27,7 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
             }
         }
     }
+    
     
     mutating func choose(card: Card){
         print("card chosen: \(card)")
@@ -41,6 +45,8 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
                     points += 3
                     if points >= highscore{
                         highscore = points
+                        let defaults = UserDefaults.standard
+                        defaults.set(points, forKey: "Highscore")
                     }
                 }
                 //wenn karten nicht übereinstimmen -> not match
@@ -57,6 +63,7 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     }
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent){
+        highscore = defaults.integer(forKey: "Highscore")
         cards = Array<Card>()
         for pairIndex in 0..<numberOfPairsOfCards{
             let content = cardContentFactory(pairIndex)
