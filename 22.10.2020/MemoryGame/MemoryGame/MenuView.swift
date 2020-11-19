@@ -80,7 +80,7 @@ struct MenuView: View {
                         ForEach(0 ..< dificulty.count) {
                            Text(self.dificulty[$0])
                         }
-                     }
+            }
             
             
                      //Text("You selected: \(dificulty[selectedDificulty])")
@@ -89,7 +89,7 @@ struct MenuView: View {
         .onReceive([self.selectedDificulty].publisher.first()) {dificulty in
             self.pickerChange(dificulty: dificulty)
         }
-
+        .foregroundColor(viewModel.theme.color)
     }
     
     // Just an example function below
