@@ -43,7 +43,13 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
                     cards[chosenIndex].isMatched = true
                     cards[potentialMatchIndex].isMatched = true
                     
-                    points += 3
+                    let earnedBonus = Int.random(in: 0..<100)
+                    if (earnedBonus % 3) == 0 {
+                        points += 5
+                    }else{
+                        points += 3
+                    }
+                    
                     if points >= highscore{
                         highscore = points
                         let defaults = UserDefaults.standard
@@ -65,7 +71,6 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent){
         
-       
         highscore = defaults.integer(forKey: "Highscore")
         cards = Array<Card>()
         for pairIndex in 0..<numberOfPairsOfCards{
