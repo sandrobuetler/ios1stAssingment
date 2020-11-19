@@ -11,7 +11,6 @@ import SwiftUI
 struct CardView: View{
     
     var card: MemoryGameModel<String>.Card
-    var theme: Theme
     
     var body: some View{
         GeometryReader{geometry in
@@ -49,8 +48,12 @@ struct CardView: View{
                 .opacity(opacity)
                 .transition(.scale)
                 
+                Text(card.content)
+                    .font(Font.system(size: fontSize(for: size)))
+                    .rotationEffect(Angle(degrees: card.isMatched ? 360 : 0))
+                    .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
                 
-                
+                /*
                 if theme.name == "Images" {
                     Image(card.content)
                         .resizable()
@@ -62,13 +65,14 @@ struct CardView: View{
                         .animation(card.isMatched ? Animation.linear(duration: contentRotationDuration).repeatForever(autoreverses: false) : .default)
                 }
                 
-                                
+                  */
                 
             }
             .cardify(isFaceUp: card.isFaceUp)
             .transition(AnyTransition.scale)
         }
     }
+    
     
     // MARK: - Drawing Constants
     private let opacity = Double(0.4)
@@ -82,11 +86,12 @@ struct CardView: View{
     private let contentRotationDuration = Double(1)
     
 }
-
-//struct CardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let game = EmojiMemoryGameViewModel()
-//        game.choose(card: game.cards[0])
-//        return CardView(card: game.cards[0])
-//    }
-//}
+/*
+struct CardView_Previews: PreviewProvider {
+    static var previews: some View {
+        let game = EmojiMemoryGameViewModel()
+        game.choose(card: game.cards[0])
+        return CardView(card: game.cards[0])
+    }
+}
+*/

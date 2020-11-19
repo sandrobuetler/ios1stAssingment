@@ -14,7 +14,7 @@ class EmojiMemoryGameViewModel: ObservableObject{
     
     @Published private var model: MemoryGameModel<String>
     
-    var theme = themes.randomElement()!
+    var theme = themes[0]
     var isIpad: Bool
     
     private static func createMemoryGame(theme: Theme)->MemoryGameModel<String>{
@@ -98,7 +98,11 @@ class EmojiMemoryGameViewModel: ObservableObject{
     }
     
     func resetGame(){
-        theme = themes.randomElement()!
+        //theme = themes[0]
+        model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
+    }
+    func resetGame(gameTheme: Int){
+        theme = themes[gameTheme]
         model = EmojiMemoryGameViewModel.createMemoryGame(theme: theme)
     }
     

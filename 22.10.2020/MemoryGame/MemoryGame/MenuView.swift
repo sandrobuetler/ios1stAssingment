@@ -34,24 +34,30 @@ struct MenuView: View {
             //Text("Menu")
             Spacer()
             Button(action: {
-                
+                viewModel.resetGame(gameTheme: 0)
                 self.showsMenu = false
             }) {
                 Text("Emoji")
             }
+        
+            
             Spacer()
             Button(action: {
-                
+                viewModel.resetGame(gameTheme: 1)
                 self.showsMenu = false
             }) {
                 Text("Fotos")
             }
+        
+            
             Spacer()
             Button(action: {
+                viewModel.resetGame(gameTheme: 2)
                 self.showsMenu = false
             }) {
                 Text("Kontaktfotos")
             }
+            
             Spacer()
             
             Picker(selection: $selectedDificulty, label: Text("Schwierigkeit")) {
@@ -77,6 +83,16 @@ struct MenuView: View {
         defaults.set(dificulty, forKey: "Difficulty")
      }
     
+}
+
+struct GradientBackgroundStyle: ButtonStyle {
+ 
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .padding()
+            
+    }
 }
 
 
