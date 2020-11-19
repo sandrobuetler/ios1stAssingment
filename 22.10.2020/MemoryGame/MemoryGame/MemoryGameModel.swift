@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct MemoryGameModel<CardContent> where CardContent: Equatable{
     
@@ -15,6 +16,11 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     private(set) var cards: Array<Card>
     private(set) var points = 0
     private(set) var highscore: Int
+    
+    private(set) var difficulty = 0
+    
+    private(set) var isIpad: Bool
+   
 
     
     private var indexOfFaceUpCard: Int?{
@@ -63,6 +69,13 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     }
     
     init(numberOfPairsOfCards: Int, cardContentFactory: (Int)->CardContent){
+        
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            isIpad = true
+        }else {
+            isIpad = false
+        }
+        
         highscore = defaults.integer(forKey: "Highscore")
         cards = Array<Card>()
         for pairIndex in 0..<numberOfPairsOfCards{
