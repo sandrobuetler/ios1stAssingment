@@ -36,8 +36,9 @@ struct MenuView: View {
             }
        
             
+            
                 
-            //Text("Menu")
+            Text("Menu")
             Spacer()
             Button(action: {
                 viewModel.resetGame(gameTheme: 0)

@@ -34,20 +34,20 @@ class EmojiMemoryGameViewModel: ObservableObject{
         if (dif == 0) {
             pairs = 4
             if isIpad == true {
-                pairs = pairs + 3
+                pairs = pairs + 2
             }
             
         }
         if dif == 1 {
             pairs = 6
             if isIpad == true {
-                pairs = pairs + 3
+                pairs = pairs + 4
             }
         }
         if dif == 2 {
             pairs = 8
             if isIpad == true {
-                pairs = pairs + 3
+                pairs = pairs + 4
             }
         }
         
