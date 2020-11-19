@@ -11,7 +11,9 @@ import SwiftUI
 // Menu View
 struct MenuView: View {
     @Binding var showsMenu: Bool
-    @State private var difficulty = 0
+    
+    var dificulty = ["Leicht", "Mittel", "Schwer"]
+    @State private var selectedDificulty = 0
     
     var body: some View {
         VStack {
@@ -41,17 +43,14 @@ struct MenuView: View {
             }
             Spacer()
             
-//            TODO: Binding muss gemacht werden
-            Picker(selection: $difficulty, label: Text("Schwierigkeit")) {
-                            Text("Leicht").tag(0)
-                            Text("Mittel").tag(1)
-                            Text("Schwierig").tag(2)
-                        }.pickerStyle(SegmentedPickerStyle())
+            Picker(selection: $selectedDificulty, label: Text("Schwierigkeit")) {
+                        ForEach(0 ..< dificulty.count) {
+                           Text(self.dificulty[$0])
+                        }
+                     }
+                     //Text("You selected: \(dificulty[selectedDificulty])")
+        }.pickerStyle(SegmentedPickerStyle())
 
-                        //Text("Level: \(difficulty)")
-
-        }
- 
     }
 }
 
