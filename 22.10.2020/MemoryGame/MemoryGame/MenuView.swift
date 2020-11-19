@@ -29,16 +29,26 @@ struct MenuView: View {
                 self.showsMenu = false
                 viewModel.resetGame()
             }) {
-                Text("Menü schliessen")
+                Image(systemName: "xmark.circle")
+                        .font(.largeTitle)
+                        .foregroundColor(.red)
+                    .padding(10)
             }
+       
+            
+                
             //Text("Menu")
             Spacer()
             Button(action: {
                 viewModel.resetGame(gameTheme: 0)
                 self.showsMenu = false
             }) {
-                Text("Emoji")
-            }
+                HStack {
+                        Image(systemName: "flag.fill")
+                        Text("Flaggen")
+                    }
+            }.buttonStyle(GradientButtonStyle())
+            
         
             
             Spacer()
@@ -46,8 +56,11 @@ struct MenuView: View {
                 viewModel.resetGame(gameTheme: 1)
                 self.showsMenu = false
             }) {
-                Text("Fotos")
-            }
+                HStack {
+                        Image(systemName: "stopwatch.fill")
+                        Text("Sports")
+                    }
+            }.buttonStyle(GradientButtonStyle())
         
             
             Spacer()
@@ -55,8 +68,11 @@ struct MenuView: View {
                 viewModel.resetGame(gameTheme: 2)
                 self.showsMenu = false
             }) {
-                Text("Kontaktfotos")
-            }
+                HStack {
+                        Image(systemName: "photo.fill")
+                        Text("Fotos")
+                    }
+            }.buttonStyle(GradientButtonStyle())
             
             Spacer()
             
@@ -85,13 +101,13 @@ struct MenuView: View {
     
 }
 
-struct GradientBackgroundStyle: ButtonStyle {
- 
+struct GradientButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .frame(minWidth: 0, maxWidth: .infinity)
+            .foregroundColor(Color.white)
             .padding()
-            
+            .background(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.blue]), startPoint: .leading, endPoint: .trailing))
+            .cornerRadius(10.0)
     }
 }
 
