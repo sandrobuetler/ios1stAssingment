@@ -11,6 +11,10 @@ import SwiftUI
 struct EmojiMemoryGameView: View {
     @State private var showMenu = true
     
+
+    //@State private var selectedDificulty = 0
+    //@State private var dif = 1
+    
     @ObservedObject var viewModel: EmojiMemoryGameViewModel
     
     var body: some View {
@@ -38,7 +42,7 @@ struct EmojiMemoryGameView: View {
                 Text("Menu")
             }).padding(textPadding)
             .sheet(isPresented: $showMenu ) {
-                MenuView(showsMenu: $showMenu)
+                MenuView(viewModel: viewModel, showsMenu: $showMenu)
             }
         }
         .foregroundColor(viewModel.theme.color)

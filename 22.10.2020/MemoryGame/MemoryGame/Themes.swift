@@ -12,18 +12,21 @@ struct Theme {
     var name: String
     var emojis: [String]
     var color: Color
-    var numberOfPairs: Int?
+    //var numberOfPairs: Int?
+    //@State var dif = 1
+    
+
+    
 }
+
 
 let themes: [Theme] = [
     Theme(
         name: "Europa",
         emojis: ["🇧🇪","🇨🇿","🇨🇭","🇩🇪","🇪🇸","🇪🇺","🇫🇷","🇬🇧","🇬🇷","🇦🇹","🇱🇮","🇮🇹"],
-        color: .black,
-        numberOfPairs: 4),
+        color: .black),
     Theme(
         name: "Sports",
         emojis: ["🧗","🏌️","🏊","⛹️","🤼","🤹","🧘","🤽","🚵","🏋️","🚴","🤸"],
-        color: .red,
-        numberOfPairs: 10),
+        color: .red),
 ]

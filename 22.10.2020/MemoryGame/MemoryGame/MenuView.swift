@@ -11,38 +11,43 @@ import SwiftUI
 // Menu View
 struct MenuView: View {
     
+    @ObservedObject var viewModel: EmojiMemoryGameViewModel
+    
+    let defaults = UserDefaults.standard
     @Binding var showsMenu: Bool
 
     var dificulty = ["Leicht", "Mittel", "Schwer"]
-    @State private var selectedDificulty = 0
-    @State private var selectedGame = ""
+    @State var selectedDificulty: Int = 0;
     
+    
+    
+
     
     var body: some View {
         VStack {
             Button(action: {
                 self.showsMenu = false
+                viewModel.resetGame()
             }) {
                 Text("Menü schliessen")
             }
             //Text("Menu")
             Spacer()
             Button(action: {
-                selectedGame = "Emoji"
+                
                 self.showsMenu = false
             }) {
                 Text("Emoji")
             }
             Spacer()
             Button(action: {
-                selectedGame = "Fotos"
+                
                 self.showsMenu = false
             }) {
                 Text("Fotos")
             }
             Spacer()
             Button(action: {
-                selectedGame = "Kontaktfotos"
                 self.showsMenu = false
             }) {
                 Text("Kontaktfotos")
@@ -54,12 +59,29 @@ struct MenuView: View {
                            Text(self.dificulty[$0])
                         }
                      }
-                    
+            
+            
                      //Text("You selected: \(dificulty[selectedDificulty])")
         }.pickerStyle(SegmentedPickerStyle())
+        
+        .onReceive([self.selectedDificulty].publisher.first()) {dificulty in
+            self.pickerChange(dificulty: dificulty)
+        }
 
     }
+    
+    // Just an example function below
+    func pickerChange(dificulty: Int) {
+           print(dificulty)
+        //let defaults = UserDefaults.standard
+        defaults.set(dificulty, forKey: "Difficulty")
+     }
+    
 }
+
+
+
+
 
 struct MenuView_Previews: PreviewProvider {
     static var previews: some View {

@@ -17,9 +17,10 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable{
     private(set) var points = 0
     private(set) var highscore: Int
     
-    private(set) var difficulty = 0
+    private(set) var difficulty = 4
     
     private(set) var isIpad: Bool
+    
    
 
     

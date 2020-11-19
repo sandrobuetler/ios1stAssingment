@@ -11,4 +11,5 @@ import Foundation
 class GameState: ObservableObject {
     @Published var highscore = 0
     @Published var difficulty = 0
+    
 }
